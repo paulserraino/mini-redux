@@ -13,7 +13,7 @@ var intialState = 0;
 
 var store = createStore(intialState, AppReducer);
 
-store.subscribe((state) => {
+var unsubscribe = store.subscribe((state) => {
     console.log(state);
 })
 
@@ -22,3 +22,5 @@ store.dispatch({ type: 'foo'})
 store.dispatch({ type: 'inc'})
 store.dispatch({ type: 'inc'})
 store.dispatch({ type: 'bar'})
+
+unsubscribe();

@@ -17,7 +17,7 @@ var intialState = 0;
 
 var store = createStore(intialState, AppReducer);
 
-store.subscribe((state) => {
+var unsubscribe = store.subscribe((state) => {
     console.log(state);
 })
 
@@ -26,6 +26,8 @@ store.dispatch({ type: 'foo'}) // => 0
 store.dispatch({ type: 'inc'}) // => 1
 store.dispatch({ type: 'inc'}) // => 2
 store.dispatch({ type: 'bar'}) // => 2
+
+unsubscribe()
 ```
 
 ## License

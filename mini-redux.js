@@ -4,7 +4,12 @@ module.exports.createStore = function (intialState, reducer) {
     var listeners = [];
 
     function subscribe(listener) {
-        listeners.push(listener);
+        listeners.push(listener)
+
+        return function unsubscribe() {
+            var index = listeners.indexOf(listener)
+            listeners.splice(index, 1)
+        }
     }
 
     function dispatch(action) {
